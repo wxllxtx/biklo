@@ -1,0 +1,10 @@
+{"nombre":"Javier","usuario":"javi123","mail":"jh@dh.com","edad":"20","pais":"Ar","password":"$2y$10$VbmRLWjUcQJYreU2XoKmbeESkkDhlxKcGQBm2ppzhQWB9B1JiKBYy","id":1}
+{"nombre":"willy","usuario":"pepito07","mail":"willy.weiss@gmail.com","edad":"32","pais":"Ar","password":"$2y$10$cDyG0g99i2inNar1iWz8wOemS1rMR2wAwbWZO0mvjbMIRwhG2nvnW","id":2}
+{"nombre":"Mechi","usuario":"mechi123","mail":"mechi@gmail.com","edad":"99","pais":"Ar","password":"$2y$10$.eggItClOhdFG\/rGC9Zd7OzbF1Fp9mN81zhxJeKfil8YQcnnecV7C","id":3}
+{"nombre":"William","usuario":"willy123","mail":"willy@hola.com","edad":"37","pais":"Ar","password":"$2y$10$O1MVpu4UUaueVtcu4AFf.etyBnylOKa.MIyYcf5x3NmFlWxbrKXLC","id":4}
+{"nombre":"Guillermo","usuario":"guille01","mail":"guille@hotmail.com","edad":"32","pais":"Fr","password":"$2y$10$HBI.LtemFqVyqbnJYImw.ubyYgYD3.a1Xcv1B0ABZCz2etTNeuaIO","id":5}
+{"nombre":null,"usuario":"willyprueba","mail":"willy@holaquetal.com","edad":null,"pais":null,"password":"$2y$10$7.39dDav6zpLVXS8nNpSyef9q1Z5KMHy1NuwPn2YMoB0m84mIVdQS","id":6}
+{"usuario":"ricardoruben","mail":"ricky@hotmail.com","password":"$2y$10$wEPXcqvcvPAc2OmxkWnUxO\/p44QZqMJddxxQGXbTilpj8Eoubfym6","id":7}
+{"usuario":"holaquetal","mail":"willy.weiss@gmailoooo.com","password":"$2y$10$r.e9u1PGrs.ATpMZuNzWPOmHeqWE2ukC5WAkeOx\/vjK6m7oeSbtUq","id":8}
+{"usuario":"holaquetal2","mail":"www@eeee.eee","password":"$2y$10$2cEp7z15HZQ.Q0eKWB9vau1I.sQxNwuQd0tSmbG4H4nE5lBELYtyq","id":9}
+{"usuario":"holahola","mail":"www@kkk.kkk","password":"$2y$10$7\/IyyOsc8tgGvMVNbZwspe6rcnA8tsoBGOyxaWsx2TCV2OMOCNS9S","id":10}

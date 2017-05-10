@@ -1,4 +1,15 @@
-<!DOCTYPE html>
+<?php
+
+  require_once("funciones.php");
+
+
+  if ($_POST) {
+    logeo($_POST["usuario"], $_POST["password"]);
+  }
+  // if (isset($_POST["usuario"])) {
+  //     $usuario = $_POST["usuario"];
+  // }
+?>
 <html lang="en">
 
     <head>
@@ -46,13 +57,13 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.html">Biklo</a>
+					<a class="navbar-brand" href="index.php">Biklo</a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="top-navbar-1">
 					<ul class="nav navbar-nav navbar-right">
 
-						<li><a class="" href="register.html">Registrate</a></li>
+						<li><a class="" href="register.php">Registrate</a></li>
 
 						<li><a class="scroll-link" href="#features">Nuestra Comunidad</a></li>
 						<li><a href="#" class="launch-modal" data-modal-id="modal-faq">Preguntas Frecuentes</a></li>
@@ -120,122 +131,19 @@
         </div>
 
         <!-- Features -->
-        <div class="features-container section-container">
-          <div class="container">
-              <div class="row">
-                  <div class="col-sm-12 features section-description wow fadeIn">
-                      <h2>Nuestra comunidad Biklo <i class="fa fa-heart" aria-hidden="true"></i> <i class="fa fa-bicycle" aria-hidden="true"></i></h2>
-                      <div class="divider-1 wow fadeInUp"><span></span></div>
-                      <p>Andar en bici es económico, divertido e ideal para compartir con amigos o en familia. Tiene grandes beneficios para tu cuerpo ya que es una de las actividades físicas más completas. La bici es un medio de transporte ecológico y eficaz, usa la energía generada por el movimiento de los pies en el pedal. Sumate a nuestra comunidad ;)</p>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-sm-4 features-box wow fadeInUp">
-                    <!-- <div class="features-box-icon"><i class="fa fa-bicycle"></i></div> -->
-                    <div class="features-box-icon"><img src="assets/img/icons/icon_1.png" alt="" height="200px" width="200px"></div>
-                      <h3>Conocé otros ciclistas</h3>
-                      <p>Sumate a nuestro club y conocé gente que comparte tus ganas de andar en bici.</p>
-                    </div>
-                    <div class="col-sm-4 features-box wow fadeInDown">
-                    <div class="features-box-icon"><img src="assets/img/icons/icon_2.png" alt="" height="200px" width="200px"></div>
-                      <h3>Nuevos paseos y rutas</h3>
-                      <p>En nuestros mapas vas a encontrar recorridos y paseos para aprovechar al máximo tu bici.</p>
-                    </div>
-                    <div class="col-sm-4 features-box wow fadeInUp">
-                    <div class="features-box-icon"><img src="assets/img/icons/icon_3.png" alt="" height="200px" width="200px"></div>
-                      <h3>Descuentos y beneficios</h3>
-                      <p>Disfrutá tus paseos en bici con los beneficios de ser parte de Biklo.</p>
-                    </div>
-              </div>
-          </div>
-        </div>
+        <?php
+        include 'features.php';
+        ?>
 
         <!-- Footer -->
-        <footer>
-	        <div class="container">
-	        	<div class="row">
-	        		<div class="col-sm-4 footer-about wow fadeInUp">
-	        			<h3>Biklo es para vos</h3>
-	        			<p>
-	        				Andar en bici es una excelente manera de disfrutar de tu ciudad bajo otra perspectiva. ¿Qué mejor manera de pasar una tarde que andando en bicicleta?
-	        			</p>
-
-                    </div>
-	        		<div class="col-sm-4 footer-contact-info wow fadeInDown">
-	        			<h3>Contacto</h3>
-
-	                	<p><i class="fa fa-envelope"></i> Email: <a href="#">hola@biklo.com</a></p>
-
-                    </div>
-                    <div class="col-sm-4 footer-social wow fadeInUp">
-                    	<h3>¡Seguinos!</h3>
-                    	<p>
-	                    	<a href="#"><i class="fa fa-facebook"></i></a>
-          							<a href="#"><i class="fa fa-twitter"></i></a>
-
-          							<a href="#"><i class="fa fa-instagram"></i></a>
-
-						</p>
-                    </div>
-	            </div>
-	            <div class="row">
-           			<div class="col-sm-6 footer-copyright">
-                    	&copy; Biklo <i class="fa fa-heart" aria-hidden="true"></i> <i class="fa fa-bicycle" aria-hidden="true"></i>
-                    </div>
-           			<div class="col-sm-6 footer-menu">
-                    	<ul>
-                    		<li><a class="scroll-link" href="#top-content">Arriba</a></li>
-							<li><a class="scroll-link" href="#features">Nuestra comunidad</a></li>
-							<li><a href="#" class="launch-modal" data-modal-id="modal-faq">Preguntas Frecuentes</a></li>
-
-
-						</ul>
-                    </div>
-           		</div>
-	        </div>
-        </footer>
-
-
+        <?php
+        include 'footer.php';
+        ?>
 
         <!-- MODAL: Frequent questions -->
-        <div class="modal fade" id="modal-faq" tabindex="-1" role="dialog" aria-labelledby="modal-faq-label" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                  <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                </button>
-                <h2 class="modal-title" id="modal-faq-label">Preguntas frecuentes</h2>
-              </div>
-              <div class="modal-body">
-                <h3>1. ¿Qué es Biklo?</h3>
-                <p>
-                        Biklo es una comunidad de ciclistas pensada en vos; que amás pedalear pero querés algo mas, pertenecer a Biklo te permitirá complementar esa pasión conociendo a otros como vos que aman las bicicletas y todo lo que las rodea.
-                      </p>
-                      <h3>2. ¿Cómo me registro?</h3>
-                      <p>
-                        Completá el formulario de registro y pertenece a nuestra comunidad; ¡es completamente gratis!
-                      </p>
-                      <h3>3. ¿Que me ofrece Biklo?</h3>
-                      <p>
-                        Te ofrecemos acceso a una comunidad donde podrás encontrar ciclistas con tus mismos intereses, acceso a nuestra completa de red de aliados comerciales que ofrecen las mejores marcas del mercado, con exclusivos descuentos y servicios de asistencia en la ruta.
-                      </p>
-                      <h3>4. ¿Tienen un mapa con las ciclovías de la ciudad?</h3>
-                      <p>
-                        Sí, lo tenemos y muchos más; como miembro de nuestra comunidad tendrás acceso al mapa completo de ciclovías de Capital Federal, así como sus puntos de interés, tales como: paseos, puntos de partidas, actividades grupales, sitios turísticos etc.
-                      </p>
-                      <h3>5. ¿Cómo funciona la comunidad Biklo?</h3>
-                      <p>
-                        Después de crear tu perfil; Biklo te sugerirá actividades, grupos y personas que compartan tus mismos intereses.
-                </p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <?php
+        include 'faq.php';
+        ?>
 
 
         <!-- Javascript -->

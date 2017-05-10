@@ -1,0 +1,8 @@
+body {
+  background-color: gold;
+}
+
+
+input.error {
+  border: red 1px solid;
+}
