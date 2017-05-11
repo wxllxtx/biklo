@@ -1,7 +1,7 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
-
 <!-- Hola que tal -->
     <head>
 
@@ -40,59 +40,20 @@
     <body>
 
 		<!-- Top menu -->
-		<nav class="navbar navbar-inverse navbar-fixed-top navbar-no-bg" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.php">Biklo</a>
-				</div>
-				<!-- Collect the nav links, forms, and other content for toggling -->
-
-        <div class="collapse navbar-collapse" id="top-navbar-1">
-					<ul class="nav navbar-nav navbar-right">
-
-						<li><a class="" href="register.php">Registrate</a></li>
-
-						<li><a class="scroll-link" href="#features">Nuestra Comunidad</a></li>
-						<li><a href="#" class="launch-modal" data-modal-id="modal-faq">Preguntas Frecuentes</a></li>
-            <li><a class="btn btn-link-2" href="login.php">Iniciá Sesión</a></li>
-					</ul>
-				</div>
-			</div>
-
-    </nav>
+    <?php
+    include 'topnav.php';
+    ?>
 
         <!-- Top content -->
-        <div class="top-content">
-            <div class="inner-bg">
-                <div class="container">
+        <?php
+        if (!isset($_SESSION['usuario'])) {
+          include 'topcontent.php';
+        } else {
+          include 'topcontentok.php';
+        }
 
-                    <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1 class="wow fadeInLeftBig"><strong>Pedaleá Buenos Aires</strong></h1>
-                            <div class="description wow fadeInLeftBig">
-                            	<p>
-	                            	Si andás en bici por Buenos Aires, ¡bienvenido!
-                            	</p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="row">
-	                	<div class="col-sm-8 col-sm-offset-2 top-buttons wow fadeInUp">
-	                		<a class="btn btn-link-3" href="login.html">Iniciá Sesión <i class="fa fa-sign-in" aria-hidden="true"></i></i></a>
-	                		<a href="register.html" class="btn btn-link-3">Registrate <i class="fa fa-pencil" aria-hidden="true"></i></a>
-	                	</div>
-	                </div>
-
-                </div>
-            </div>
-        </div>
+        ?>
 
         <!-- Features -->
         <?php

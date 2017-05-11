@@ -134,6 +134,7 @@
 
     return false;
   }
+
   function logeo($user, $clave) {
       //esto trae los usuarios
       $todos = traerTodos();
@@ -143,13 +144,10 @@
       if ($usuario["usuario"] == $user && password_verify($clave, $usuario["password"])) {
         session_start();
         $_SESSION['usuario']=$usuario["usuario"];
-        header('location:felicidad.php');
+        header('location:index.php');
       }
     }
 
-    if( !isset($_SESSION['usuario']) ){
-    echo  'usuario o contraseña invalidos';
-    }
   }
 
 ?>

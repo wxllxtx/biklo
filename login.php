@@ -1,15 +1,15 @@
+<?php if (isset($_SESSION['usuario'])) {
+  session_start(); 
+}?>
 <?php
 
   require_once("funciones.php");
 
-
   if ($_POST) {
     logeo($_POST["usuario"], $_POST["password"]);
   }
-  // if (isset($_POST["usuario"])) {
-  //     $usuario = $_POST["usuario"];
-  // }
 ?>
+
 <html lang="en">
 
     <head>
@@ -48,32 +48,11 @@
     <body>
 
 		<!-- Top menu -->
-		<nav class="navbar navbar-inverse navbar-fixed-top navbar-no-bg" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.php">Biklo</a>
-				</div>
-				<!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="top-navbar-1">
-					<ul class="nav navbar-nav navbar-right">
+    <?php
+    include 'topnav.php';
+    ?>
 
-						<li><a class="" href="register.php">Registrate</a></li>
-
-						<li><a class="scroll-link" href="#features">Nuestra Comunidad</a></li>
-						<li><a href="#" class="launch-modal" data-modal-id="modal-faq">Preguntas Frecuentes</a></li>
-            <li><a class="btn btn-link-2" href="#" style="opacity: 0.2;">Iniciá Sesión</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-
-    <!-- Login Form 1 -->
+    <!-- Login Form -->
     <div class="l-form-1-container section-container section-container-image-bg">
           <div class="container">
               <div class="row">
@@ -90,6 +69,11 @@
                         <div class="l-form-1-top-left">
                           <h3>Logueate</h3>
                 <p>Ingresá con tu usuario</p>
+                <?php
+                if (!empty($_SESSION['usuario']) ){
+                echo  'Usuario o contraseña invalidos';
+                }
+                 ?>
                         </div>
                         <div class="l-form-1-top-right">
                           <i class="fa fa-lock"></i>
@@ -98,12 +82,12 @@
                         <div class="l-form-1-bottom">
                         <form role="form" action="" method="post">
                             <div class="form-group">
-                            <label class="sr-only" for="l-form-1-username">Usuario</label>
-                              <input type="text" name="l-form-1-username" placeholder="Usuario" class="l-form-1-username form-control" id="l-form-1-username">
+                            <label class="sr-only" for="usuario">Usuario</label>
+                              <input type="text" name="usuario" placeholder="Usuario" class="l-form-1-username form-control" id="usuario">
                             </div>
                             <div class="form-group">
-                              <label class="sr-only" for="l-form-1-password">Contraseña</label>
-                              <input type="password" name="l-form-1-password" placeholder="Contraseña" class="l-form-1-password form-control" id="l-form-1-password">
+                              <label class="sr-only" for="password">Contraseña</label>
+                              <input type="password" name="password" placeholder="Contraseña" class="l-form-1-password form-control" id="password">
                             </div>
                             <button type="submit" class="btn">¡Entrar!</button>
                         </form>
@@ -154,9 +138,8 @@
         <script src="assets/js/retina-1.1.0.min.js"></script>
         <script src="assets/js/waypoints.min.js"></script>
         <script src="assets/js/scripts.js"></script>
-
-                <script src="assets/js/login-forms.js"></script>
-                <!-- Javascript -->
+        <script src="assets/js/login-forms.js"></script>
+        <!-- Javascript -->
 
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
