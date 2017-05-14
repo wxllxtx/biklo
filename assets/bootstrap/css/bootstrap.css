@@ -2651,6 +2651,7 @@ input[type="search"] {
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
   position: absolute;
+  line-height: 24px;
   margin-top: 4px \9;
   margin-left: -20px;
 }
@@ -2662,7 +2663,8 @@ input[type="search"] {
 .checkbox-inline {
   position: relative;
   display: inline-block;
-  padding-left: 20px;
+  padding-left: 40px;
+
   margin-bottom: 0;
   font-weight: normal;
   vertical-align: middle;

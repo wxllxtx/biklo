@@ -144,10 +144,16 @@
       if ($usuario["usuario"] == $user && password_verify($clave, $usuario["password"])) {
         session_start();
         $_SESSION['usuario']=$usuario["usuario"];
+        setcookie("recordar", $user);
         header('location:index.php');
       }
     }
 
   }
+
+function recordarUsuario ($user) {
+  setcookie("recordar", $user);
+}
+
 
 ?>

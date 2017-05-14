@@ -18,6 +18,7 @@
 	-moz-border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px;
 }
 
+
 .l-form-1-box input[type="text"],
 .l-form-1-box input[type="password"] {
 	height: 50px;

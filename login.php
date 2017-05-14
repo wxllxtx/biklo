@@ -1,14 +1,24 @@
 <?php if (isset($_SESSION['usuario'])) {
-  session_start(); 
+  session_start();
 }?>
 <?php
 
   require_once("funciones.php");
 
   if ($_POST) {
+    if (isset($_POST["recordar"])) {
+      recordarUsuario($_POST["recordar"]);
+    };
     logeo($_POST["usuario"], $_POST["password"]);
   }
+
+  // if ($_POST) {
+  //   print_r($_POST);
+  // }
+
 ?>
+
+
 
 <html lang="en">
 
@@ -28,6 +38,7 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/media-queries.css">
         <link rel="stylesheet" href="assets/css/login-forms.css">
+        <link rel="stylesheet" href="assets/css/registration-forms.css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -83,12 +94,18 @@
                         <form role="form" action="" method="post">
                             <div class="form-group">
                             <label class="sr-only" for="usuario">Usuario</label>
-                              <input type="text" name="usuario" placeholder="Usuario" class="l-form-1-username form-control" id="usuario">
+                              <input type="text" name="usuario" placeholder="Usuario" class="l-form-1-username form-control" id="usuario" value="<?= (isset($_COOKIE["recordar"]) ? $_COOKIE["recordar"]:''); ?>">
                             </div>
                             <div class="form-group">
                               <label class="sr-only" for="password">Contraseña</label>
                               <input type="password" name="password" placeholder="Contraseña" class="l-form-1-password form-control" id="password">
                             </div>
+                            <div class="form-group">
+                              <label class="checkbox-inline">
+  						                	<span style="line-height: 24px;"><input type="checkbox" name="recordar"> Recordar usuario </span>
+  						                </label>
+                            </div>
+
                             <button type="submit" class="btn">¡Entrar!</button>
                         </form>
                       </div>

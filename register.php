@@ -19,6 +19,7 @@
       if (count($errores) == 0) {
         $usuario = crearUsuario($_POST);
         guardarUsuario($usuario);
+        recordarUsuario($_POST["usuario"]);
         header("Location:login.php");exit;
       }
     }
