@@ -14,14 +14,14 @@
       $errores["usuario"] = "El usuario debe tener más de 7 caracteres";
     }
 
-    $mail = trim($informacion["mail"]);
+    $email = trim($informacion["email"]);
 
-    if (strlen($mail) == 0) {
-      $errores["mail"] = "Che, no pusiste el mail :(";
-    } else if (! filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-      $errores["mail"] = "El mail debe ser un mail";
-    } else if (buscarPorMail($mail) != false) {
-      $errores["mail"] = "El mail ya existe";
+    if (strlen($email) == 0) {
+      $errores["email"] = "Che, no pusiste el email :(";
+    } else if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $errores["email"] = "El email debe ser un mail";
+    } else if (buscarPorMail($email) != false) {
+      $errores["email"] = "El email ya existe";
     }
 
     // $edad = trim($informacion["edad"]);
@@ -55,14 +55,19 @@
   			$miArchivo = $miArchivo . "/assets/img/avatars/";
   			$miArchivo = $miArchivo . $_POST["usuario"] . "." . $ext;
   			move_uploaded_file($archivo, $miArchivo);
+
+        
+
       }
       else {
         $errores["imgPerfil"] = "Ey, subi una foto. No cualquier cosa";
       }
-		} else {
-      //Acá hay error
-      $errores["imgPerfil"] = "No se pudo subir la foto :(";
-    }
+		}
+
+    // else {
+    //   //Acá hay error
+    //   $errores["imgPerfil"] = "No se pudo subir la foto :(";
+    // }
     return $errores;
 	}
 
@@ -79,7 +84,7 @@
     $usuario = [
       // "nombre" => $datos["nombre"],
       "usuario" => $datos["usuario"],
-      "mail" => $datos["mail"],
+      "email" => $datos["email"],
       // "edad" => $datos["edad"],
       // "pais" => $datos["pais"],
       "password" => password_hash($datos["password"], PASSWORD_DEFAULT)
@@ -123,11 +128,11 @@
     return $id + 1;
   }
 
-  function buscarPorMail($mail) {
+  function buscarPorMail($email) {
     $todos = traerTodos();
 
     foreach ($todos as $usuario) {
-      if ($usuario["mail"] == $mail) {
+      if ($usuario["email"] == $email) {
         return $usuario;
       }
     }

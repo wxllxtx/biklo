@@ -1,36 +1,62 @@
 <?php session_start(); ?>
 <?php
-  require_once("funciones.php");
-  traerTodos();
+require 'clsValidacion.php';
+require 'clsUsuario.php';
+require_once('funciones.php');
 
-  $usuario = "";
-  $mail = "";
+$usuario = '';
+$email = '';
 
+if($_POST) {
 
-  $errores = [];
+	$validar = new Validacion();
 
-  if ($_POST) {
-    // Estoy en post y valido
-    $errores = validarInformacion($_POST);
+	//validamos
 
-    if (count($errores) == 0) {
-      // No hay errores
-      $errores = guardarImagen("imgPerfil", $errores);
-      if (count($errores) == 0) {
-        $usuario = crearUsuario($_POST);
-        guardarUsuario($usuario);
-        recordarUsuario($_POST["usuario"]);
-        header("Location:login.php");exit;
-      }
-    }
+	$errores = array();
 
-    if (!isset($errores["mail"])) {
-        $mail = $_POST["mail"];
-    }
-    if (!isset($errores["usuario"])) {
-        $usuario = $_POST["usuario"];
-    }
-  }
+	if(!$validar->validarEmail($_POST['email'])) {
+		$errores[] = 'El email no es valido';
+	}
+
+	if(!$validar->validarPassword($_POST['password'])) {
+		$errores[] = 'El password no es valido';
+	}
+
+	if(!$validar->validarCPassword($_POST['password'],$_POST['cpassword'])) {
+		$errores[] = 'El password debe ser igual en los dos campos';
+	}
+
+	if(!$validar->validarUsuario($_POST['usuario'])) {
+		$errores[] = 'El usuario no es valido';
+	}
+
+	if (!isset($errores["email"])) {
+			$email = $_POST["email"];
+	}
+	if (!isset($errores["usuario"])) {
+			$usuario = $_POST["usuario"];
+	}
+
+	if(empty($errores)) {
+
+		$db = new PDO('mysql:host=localhost;dbname=registro',
+						'root',
+						'root');
+
+		$usuario = new Usuario($db);
+
+		$idusuario = $usuario->registrarUsuario($_POST);
+
+    $errores = $usuario->guardarImagen("imgPerfil", $errores);
+
+    $persistir = $usuario->recordarUsuario($_POST['usuario']);
+
+		header('Location:login.php');exit;
+
+	}
+
+}
 ?>
 
 
@@ -93,11 +119,11 @@
                         <div class="r-form-1-top-left">
                           <h3>Hacete miembro</h3>
                             <p>¡Llená el formulario y a pedalear!</p>
-                            <?php if(count($errores) > 0) { ?>
+                            <?php if(!empty($_POST)) { ?>
                               <ul>
-                                  <?php foreach($errores as $error) { ?>
+                                  <?php foreach($errores as $e) { ?>
                                     <li>
-                                      <?=$error?>
+                                      <?php echo $e . "<br>"; ?>
                                     </li>
                                   <?php } ?>
                               </ul>
@@ -116,8 +142,8 @@
                             </div>
 
                             <div class="form-group">
-                              <label class="sr-only" for="mail">Email</label>
-                              <input type="text" name="mail" placeholder="Email" class="r-form-1-email form-control" id="mail" value="<?=$mail?>">
+                              <label class="sr-only" for="email">Email</label>
+                              <input type="text" name="email" placeholder="Email" class="r-form-1-email form-control" id="email" value="<?=$email?>">
                             </div>
 
                             <div class="form-group">

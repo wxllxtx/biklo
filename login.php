@@ -5,16 +5,51 @@
 
   require_once("funciones.php");
 
-  if ($_POST) {
+// Esto es para el logeo viejo con JSON
+  // if ($_POST) {
+  //   logeo($_POST["usuario"], $_POST["password"]);
+  // }
+
+  require 'clsValidacion.php';
+  require 'clsUsuario.php';
+
+  if($_POST) {
+
     if (isset($_POST["recordar"])) {
       recordarUsuario($_POST["recordar"]);
     };
-    logeo($_POST["usuario"], $_POST["password"]);
-  }
 
-  // if ($_POST) {
-  //   print_r($_POST);
-  // }
+
+  	$validar = new Validacion();
+
+  	//validamos
+
+
+
+  	$errores = array();
+
+  	if(!$validar->validarPassword($_POST['password'])) {
+  		$errores[] = 'El password no es valido';
+  	}
+
+  	if(!$validar->validarUsuario($_POST['usuario'])) {
+  		$errores[] = 'El usuario no es valido';
+  	}
+
+  	// if(!$validar->validarEmail($_POST['email'])) {
+  	// 	$errores[] = 'El email no es valido';
+  	// }
+
+  	if(empty($errores)) {
+
+  		$db = new PDO('mysql:host=localhost;dbname=registro',
+  						'root',
+  						'root');
+
+  		$usuario = new Usuario($db);
+  		$usuario->logeo($_POST);
+  	}
+  }
 
 ?>
 
@@ -80,11 +115,21 @@
                         <div class="l-form-1-top-left">
                           <h3>Logueate</h3>
                 <p>Ingresá con tu usuario</p>
-                <?php
+                <!-- <?php
                 if (!empty($_SESSION['usuario']) ){
                 echo  'Usuario o contraseña invalidos';
                 }
-                 ?>
+                 ?> -->
+                 <?php if(!empty($_POST)) { ?>
+                   <ul>
+                       <?php foreach($errores as $e) { ?>
+                         <li>
+                           <?php echo $e . "<br>"; ?>
+                         </li>
+                       <?php } ?>
+                   </ul>
+                 <?php } ?>
+
                         </div>
                         <div class="l-form-1-top-right">
                           <i class="fa fa-lock"></i>
