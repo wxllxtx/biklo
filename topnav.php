@@ -1,7 +1,4 @@
-
-
-
-<nav class="navbar navbar-inverse navbar-fixed-top navbar-no-bg" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top navbar-no-bg" role="navigation" id="topnavbar-id">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">

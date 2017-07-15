@@ -1,5 +1,10 @@
 <?php session_start(); ?>
 <?php
+// Esto es para chequear si existe la cookie de cambio de THEME
+	if(!empty($_COOKIE['_theme'])) $style = $_COOKIE['_theme'];
+	else $style = "style";
+?>
+<?php
 require 'clsValidacion.php';
 require 'clsUsuario.php';
 require_once('funciones.php');
@@ -38,6 +43,8 @@ if($_POST) {
 			$usuario = $_POST["usuario"];
 	}
 
+
+
 	if(empty($errores)) {
 
 		$db = new PDO('mysql:host=localhost;dbname=registro',
@@ -46,13 +53,17 @@ if($_POST) {
 
 		$usuario = new Usuario($db);
 
+		// $chequearmail = $usuario->existeUsuarioConEsteEmail($_POST['email']);
+
 		$idusuario = $usuario->registrarUsuario($_POST);
 
     $errores = $usuario->guardarImagen("imgPerfil", $errores);
 
     $persistir = $usuario->recordarUsuario($_POST['usuario']);
 
-		header('Location:login.php');exit;
+		header('Location:login.php');
+
+		exit;
 
 	}
 
@@ -75,7 +86,7 @@ if($_POST) {
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="assets/css/animate.css">
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/<?php echo $style ?>.css">
         <link rel="stylesheet" href="assets/css/media-queries.css">
         <link rel="stylesheet" href="assets/css/registration-forms.css">
 
@@ -92,6 +103,10 @@ if($_POST) {
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+				<script src="assets/js/gen_validatorv4.js"
+						type="text/javascript" xml:space="preserve">
+						</script>
 
     </head>
 
@@ -135,7 +150,7 @@ if($_POST) {
                         </div>
                         </div>
                         <div class="r-form-1-bottom">
-                        <form role="form" action="" method="post" enctype="multipart/form-data">
+                        <form role="form" action="" method="post" enctype="multipart/form-data" id='myform'>
                           <div class="form-group">
                             <label class="sr-only" for="usuario">Nombre de usuario</label>
                               <input type="text" name="usuario" placeholder="Nombre de usuario" class="r-form-1-first-name form-control" id="usuario" value="<?=$usuario?>">
@@ -165,6 +180,34 @@ if($_POST) {
 
                             <button type="submit" class="btn" name="enviar" value="Enviar">Enviar</button>
                         </form>
+
+
+												<!-- Validación Javascrip! -->
+
+												<script language="JavaScript" type="text/javascript" xml:space="preserve">
+
+													var frmvalidator  = new Validator("myform");
+
+													frmvalidator.EnableMsgsTogether();
+													frmvalidator.addValidation("usuario","req","El nombre de usuario es o b l i g a t o r i o");
+													frmvalidator.addValidation("usuario","maxlen=20",	"El nombre de usuario debe tener máximo 20 caracteres");
+													frmvalidator.addValidation("usuario","minlen=6",	"El nombre de usuario debe tener mínimo 6 caracteres");
+
+													frmvalidator.addValidation("email","maxlen=50");
+													frmvalidator.addValidation("email","req","El email es o b l i g a t o r i o");
+													frmvalidator.addValidation("email","email","El email es inválido");
+
+													frmvalidator.addValidation("password","req",	"La contraseña es o b l i g a t o r i a");
+													frmvalidator.addValidation("password","minlen=8",	"La contraseña debe tener mínino 8 caracteres");
+
+													frmvalidator.addValidation("cpassword","eqelmnt=password","Las dos contraseñas tienen que ser iguales");
+
+												</script>
+
+
+
+
+
                       </div>
 
                   </div>
@@ -188,7 +231,10 @@ if($_POST) {
         ?>
 
 
+
         <!-- Javascript -->
+
+
         <script src="assets/js/jquery-1.11.1.min.js"></script>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.backstretch.min.js"></script>

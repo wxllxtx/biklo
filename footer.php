@@ -1,4 +1,4 @@
-<footer>
+<footer id="footer-id">
   <div class="container">
     <div class="row">
       <div class="col-sm-4 footer-about wow fadeInUp">
@@ -12,6 +12,13 @@
         <h3>Contacto</h3>
 
             <p><i class="fa fa-envelope"></i> Email: <a href="#">hola@biklo.com</a></p>
+            <br>
+        <h3>¡Cambiá el theme!</h3>
+            <div id="estilos">
+            <p><a id="style" href="theme.php?thm=style">Coral Reef</a></p>
+            <p><a id="style1" href="theme.php?thm=style1">Water Park</a></p>
+            <p><a id="style2" href="theme.php?thm=style2">Tequila Sunrise</a></p>
+            </div>
 
             </div>
             <div class="col-sm-4 footer-social wow fadeInUp">

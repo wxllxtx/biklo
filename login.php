@@ -2,6 +2,11 @@
   session_start();
 }?>
 <?php
+// Esto es para chequear si existe la cookie de cambio de THEME
+	if(!empty($_COOKIE['_theme'])) $style = $_COOKIE['_theme'];
+	else $style = "style";
+?>
+<?php
 
   require_once("funciones.php");
 
@@ -70,7 +75,7 @@
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="assets/css/animate.css">
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/<?php echo $style ?>.css">
         <link rel="stylesheet" href="assets/css/media-queries.css">
         <link rel="stylesheet" href="assets/css/login-forms.css">
         <link rel="stylesheet" href="assets/css/registration-forms.css">

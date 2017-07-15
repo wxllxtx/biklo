@@ -25,7 +25,6 @@ class Usuario {
 
 	public function registrarUsuario($arr) {
 
-
 		$sql = "INSERT INTO usuarios (usuario, email, password) VALUES ('".$arr['usuario']."','".$arr['email']."','".md5($arr['password'])."')";
 
 		$this->db->query($sql);

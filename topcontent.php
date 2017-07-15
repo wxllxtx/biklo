@@ -9,6 +9,9 @@
                       <p>
                         Si andás en bici por Buenos Aires, ¡bienvenido!
                       </p>
+                      <h4 id="cant_users">
+                        Acá aparece la cantidad de usuarios registrados ;)
+                      </h4>
                     </div>
                 </div>
             </div>
@@ -23,3 +26,5 @@
         </div>
     </div>
 </div>
+
+<script src="assets/js/cant_users.js"></script>

@@ -20,7 +20,7 @@ h1, h2 {
 	margin-top: 10px;
 	font-size: 38px;
     font-weight: 100;
-    color: #f16061;
+    color: #51c5c0;
     line-height: 50px;
 }
 
@@ -216,7 +216,7 @@ img { max-width: 100%; }
 
 .navbar {
 	margin-bottom: 0;
-	background: #f16061;
+	background: #51c5c0;
 	border: 0;
 	-o-transition: all .6s; -moz-transition: all .6s; -webkit-transition: all .6s; -ms-transition: all .6s; transition: all .6s;
 }
@@ -536,7 +536,7 @@ ul.navbar-nav {
 
 footer {
 	padding: 60px 0 35px 0;
-	background: #f16061;
+	background: #51c5c0;
 	color: #fff;
 	text-align: left;
 }
