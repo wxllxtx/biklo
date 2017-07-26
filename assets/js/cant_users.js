@@ -16,7 +16,7 @@ xmlhttp.send();
               document.getElementById('cant_users').innerHTML = "¡Ya somos " + xmlhttp.responseText + " usuarios registrados!";
             }
           }
-          xmlhttp.open('GET','../../get_users.php',true);
+          xmlhttp.open('GET','get_users.php',true);
           xmlhttp.send();
 
     }, 30000);
